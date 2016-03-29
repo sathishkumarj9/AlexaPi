@@ -1,8 +1,7 @@
 #! /bin/bash
-
-baselocation = "{$PWD}"
+baselocation=$PWD
 apt-get update
-apt-get install  libasound2-dev memcached python-pip mpg123 python-alsaaudio python-aubio
+apt-get install libasound2-dev memcached python-pip mpg123 python-alsaaudio python-aubio
 pip install -r requirements.txt
 cp initd_alexa.sh /etc/init.d/alexa
 cd /etc/rc5.d
@@ -29,7 +28,7 @@ echo "Enter your Security Client Secret:"
 read secret
 echo Client_Secret = \"$secret\" >> creds.py
 
-ip=$(ifconfig eth0 | grep "inet addr" | cut -d ':' -f 2 | cut -d ' ' -f 1`)
+ip=$(ifconfig eth0 | grep "inet addr" | cut -d ':' -f 2 | cut -d ' ' -f 1)
 echo "Open http://$ip:5000"
 python ./auth_web.py 
 
